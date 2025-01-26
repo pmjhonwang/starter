@@ -24,4 +24,12 @@ return {
     -- available after the first executing of it or after a keymap of text-case.nvim has been used.
     lazy = false,
   },
+  -- add image preview
+  {
+    "adelarsq/image_preview.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("image_preview").setup()
+    end,
+  },
 }
