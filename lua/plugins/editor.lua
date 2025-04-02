@@ -53,6 +53,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
+      -- requirements brew install imagemagick
       { "3rd/image.nvim", build = false, opts = {
         processor = "magick_cli",
       } },
