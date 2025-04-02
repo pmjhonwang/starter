@@ -1,22 +1,16 @@
 return {
+  -- icons
+  { "nvim-tree/nvim-web-devicons" },
   -- markview
   {
     "OXY2DEV/markview.nvim",
     lazy = false,
   },
-  -- lualine
+  -- cyberdream
   {
-    "nvim-lualine/lualine.nvim",
-    opts = {
-      sections = {
-        lualine_z = {},
-      },
-    },
-  },
-  -- bufferline
-  { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
-  {
-    "folke/tokyonight.nvim",
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
     opts = {
       transparent = true,
       styles = {
@@ -24,6 +18,56 @@ return {
         floats = "transparent",
       },
     },
+  },
+  -- Configure LazyVim to load cyberdream
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "cyberdream",
+    },
+  },
+  -- bufferline
+  {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    lazy = false,
+    config = function()
+      local bufferline = require("bufferline")
+      bufferline.setup({
+        options = {
+          separator_style = "thick",
+          style_preset = bufferline.style_preset.minimal, -- or bufferline.style_preset.minimal,
+          custom_areas = {
+            right = function()
+              local result = {}
+              local seve = vim.diagnostic.severity
+              local error = #vim.diagnostic.get(0, { severity = seve.ERROR })
+              local warning = #vim.diagnostic.get(0, { severity = seve.WARN })
+              local info = #vim.diagnostic.get(0, { severity = seve.INFO })
+              local hint = #vim.diagnostic.get(0, { severity = seve.HINT })
+
+              if error ~= 0 then
+                table.insert(result, { text = "  " .. error, link = "DiagnosticError" })
+              end
+
+              if warning ~= 0 then
+                table.insert(result, { text = "  " .. warning, link = "DiagnosticWarn" })
+              end
+
+              if hint ~= 0 then
+                table.insert(result, { text = "  " .. hint, link = "DiagnosticHint" })
+              end
+
+              if info ~= 0 then
+                table.insert(result, { text = "  " .. info, link = "DiagnosticInfo" })
+              end
+              return result
+            end,
+          },
+        },
+      })
+    end,
   },
   {
     "folke/snacks.nvim",
