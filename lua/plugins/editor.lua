@@ -1,6 +1,4 @@
 return {
-  -- icons
-  { "nvim-tree/nvim-web-devicons" },
   -- markview
   {
     "OXY2DEV/markview.nvim",
