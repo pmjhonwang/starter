@@ -76,7 +76,6 @@ return {
       local function ins_left(component)
         table.insert(config.sections.lualine_c, component)
       end
-
       -- Inserts a component in lualine_x at right section
       local function ins_right(component)
         table.insert(config.sections.lualine_x, component)
@@ -93,7 +92,8 @@ return {
       ins_left({
         -- mode component
         function()
-          return ""
+          -- return ""
+          return ""
         end,
         color = function()
           -- auto change color according to neovims mode
