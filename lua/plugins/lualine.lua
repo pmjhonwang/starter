@@ -92,8 +92,8 @@ return {
       ins_left({
         -- mode component
         function()
-          -- return ""
-          return ""
+          --  
+          return ""
         end,
         color = function()
           -- auto change color according to neovims mode
