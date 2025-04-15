@@ -1,4 +1,11 @@
-return {
+return { -- lazy.nvim
+  {
+    "chrisgrieser/nvim-scissors",
+    dependencies = "nvim-telescope/telescope.nvim", -- if using telescope
+    opts = {
+      snippetDir = vim.env.CUSTOME_SNIPPETS_PATH_VSCODE,
+    },
+  },
   {
     "L3MON4D3/LuaSnip",
     -- follow latest release.
@@ -6,9 +13,12 @@ return {
     -- install jsregexp (optional!).
     build = "make install_jsregexp",
     config = function()
-      local loaderFromVsCode = require("luasnip.loaders.from_vscode")
-      loaderFromVsCode.lazy_load()
-      loaderFromVsCode.lazy_load({ paths = "/Users/pmjhonwang/Workspace/pdd/sms/snippets" })
+      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_vscode").lazy_load({ paths = vim.env.CUSTOME_SNIPPETS_PATH_VSCODE })
+      require("luasnip.loaders.from_snipmate").lazy_load({
+        paths = { "~/.config/nvim/snippets/vim-snippets/snippets" },
+        include = { "javascript", "typescript", "typescriptreact" },
+      })
     end,
   },
 }

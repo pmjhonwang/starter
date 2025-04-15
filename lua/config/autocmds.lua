@@ -8,8 +8,8 @@
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
 -- auto completion
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-  callback = function()
-    vim.api.nvim_command("LLMAppHandler Completion")
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "VimEnter" }, {
+--   callback = function()
+--     vim.api.nvim_command("LLMAppHandler Completion")
+--   end,
+-- })

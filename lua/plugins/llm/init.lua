@@ -3,6 +3,7 @@ local keymaps = require("plugins.llm.keymaps")
 return {
   {
     "Kurama622/llm.nvim",
+    lazy = false,
     dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
     cmd = { "LLMSessionToggle", "LLMSelectedTextHandler", "LLMAppHandler" },
     config = function()
