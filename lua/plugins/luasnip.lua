@@ -13,6 +13,11 @@ return { -- lazy.nvim
     -- install jsregexp (optional!).
     build = "make install_jsregexp",
     config = function()
+      local luasnip = require("luasnip")
+      luasnip.setup({
+        cut_selection_keys = { "TM_SELECTED_TEXT" },
+        store_selection_keys = "<Tab>",
+      })
       require("luasnip.loaders.from_vscode").lazy_load()
       require("luasnip.loaders.from_vscode").lazy_load({ paths = vim.env.CUSTOME_SNIPPETS_PATH_VSCODE })
       require("luasnip.loaders.from_snipmate").lazy_load({
