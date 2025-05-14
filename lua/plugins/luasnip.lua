@@ -24,7 +24,7 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load({ paths = vim.env.CUSTOME_SNIPPETS_PATH_VSCODE })
       require("luasnip.loaders.from_snipmate").lazy_load({
         paths = { "~/.config/nvim/snippets/vim-snippets/snippets" },
-        include = { "javascript", "typescript", "typescriptreact" },
+        include = { "javascript", "typescript", "typescriptreact", "css", "scss", "sass", "html" },
       })
     end,
   },
