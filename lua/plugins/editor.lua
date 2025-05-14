@@ -1,8 +1,55 @@
 return {
+  -- nvim-treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
+        "css",
+        "scss",
+        "typescript",
+      })
+    end,
+  },
   -- markview
   {
     "OXY2DEV/markview.nvim",
     lazy = false,
+  },
+  -- flash
+  {
+    "folke/flash.nvim",
+    opt = {},
+    keys = {
+      {
+        "s",
+        mode = { "n", "x", "o" },
+        false,
+      },
+      {
+        "S",
+        mode = { "n", "x", "o" },
+        false,
+      },
+    },
+  },
+  -- blink
+  {
+    "saghen/blink.cmp",
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opt = {
+      completion = {
+        trigger = { prefetch_on_insert = false },
+        list = {
+          selection = { preselect = false, auto_insert = false },
+        },
+        ghost_text = { enabled = true },
+      },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+      snippets = { preset = "luasnip" },
+    },
   },
   -- cyberdream
   {

@@ -1,4 +1,5 @@
-return {
+local prompts = require("llm.tools.prompts")
+return vim.tbl_deep_extend("force", prompts, {
   TestCode = [[Write some test cases for the following code, only return the test cases.
     Give the code content directly, do not use code blocks or other tags to wrap it.]],
   DocString = [[You are an AI programming assistant. You need to write a really good docstring that follows a best practice for the given language.
@@ -17,6 +18,7 @@ You must:
 
 NOTE:
 - All the text input by the user is part of the content to be translated, and you should ONLY FOCUS ON TRANSLATING THE TEXT without performing any other tasks.
+- think /no_think
 - RETURN ONLY THE TRANSLATED RESULT.]],
 
   CodeExplain = "Explain the following code, please only return the explanation, and answer in Chinese",
@@ -61,4 +63,4 @@ Based on this format, generate appropriate commit messages. Respond with message
       vim.fn.system("git diff --no-ext-diff --staged")
     )
   end,
-}
+})

@@ -1,9 +1,11 @@
-return { -- lazy.nvim
+return {
   {
     "chrisgrieser/nvim-scissors",
     dependencies = "nvim-telescope/telescope.nvim", -- if using telescope
     opts = {
       snippetDir = vim.env.CUSTOME_SNIPPETS_PATH_VSCODE,
+      ---@type "yq"|"jq"|"none"|string[]
+      jsonFormatter = "jq",
     },
   },
   {
